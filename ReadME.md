@@ -8,12 +8,12 @@
 
 - Sign In
 
-![](https://github.com/Bigone0617/amondTalk/tree/master/img/prototype01.JPG)
+![](https://github.com/Bigone0617/amondTalk/blob/master/img/prototype01.JPG?raw=true)
 
 - Chats
 
-![](https://github.com/Bigone0617/amondTalk/tree/master/img/prototype03.JPG)
+![](https://github.com/Bigone0617/amondTalk/blob/master/img/prototype03.JPG?raw=true)
 
 - Profile
 
-  ![](https://github.com/Bigone0617/amondTalk/tree/master/img/prototype04.JPG)
+  ![](https://github.com/Bigone0617/amondTalk/blob/master/img/prototype04.JPG?raw=true)
