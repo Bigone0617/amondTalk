@@ -4,7 +4,7 @@
 
 - Sign Up
 
-![](https://github.com/Bigone0617/amondTalk/tree/master/img/prototype02.JPG)
+![](https://github.com/Bigone0617/amondTalk/blob/master/img/prototype02.JPG?raw=true)
 
 - Sign In
 
