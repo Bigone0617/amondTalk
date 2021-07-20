@@ -4,16 +4,16 @@
 
 - Sign Up
 
-![](D:\GIT\amondTalk_local\img\prototype02.JPG)
+![](https://github.com/Bigone0617/amondTalk/tree/master/img/prototype02.JPG)
 
 - Sign In
 
-![](D:\GIT\amondTalk_local\img\prototype01.JPG)
+![](https://github.com/Bigone0617/amondTalk/tree/master/img/prototype01.JPG)
 
 - Chats
 
-![](D:\GIT\amondTalk_local\img\prototype03.JPG)
+![](https://github.com/Bigone0617/amondTalk/tree/master/img/prototype03.JPG)
 
 - Profile
 
-  ![]()![prototype04](D:\GIT\amondTalk_local\img\prototype04.JPG)
+  ![]()![prototype04](https://github.com/Bigone0617/amondTalk/tree/master/img/prototype04.JPG)
