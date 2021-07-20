@@ -1,0 +1,36 @@
+{
+  "name": "simplechat_server",
+  "version": "1.0.0",
+  "description": "Simple chat API made with nodeJS",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
+  },
+  "keywords": [
+    "chat",
+    "API"
+  ],
+  "author": "Bigone",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "2.0.9"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-validator": "^6.11.1",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "1.10.0",
+    "mysql2": "2.2.5",
+    "pg": "8.6.0",
+    "pg-hstore": "2.3.4",
+    "sequelize": "6.6.4",
+    "socket.io": "^4.1.2"
+  }
+}
