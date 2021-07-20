@@ -1,13 +1,11 @@
 import React, { memo, useState } from 'react';
 import parseDate from '../util/date';
-import { useHistory} from 'react-router-dom';
 
 import Avatar from './Avatar';
 
 const ChatCard = memo(({chat, owner, user, chatService}) => {
     const {text, createdAt, chatID, userName, url} = chat;
     const [rightClick, setRightClick] = useState(false);
-    const history = useHistory();
 
     const onRightClick = (e) => {
         e.preventDefault();
@@ -18,7 +16,7 @@ const ChatCard = memo(({chat, owner, user, chatService}) => {
         e.preventDefault();
         chatService
             .deleteChat(e.target.id)
-            .then(() => history.push('/'));
+            .then(() => window.location.reload());
     }
 
     return (

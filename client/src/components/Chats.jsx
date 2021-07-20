@@ -34,10 +34,14 @@ const Chats = memo(({authService, chatService}) => {
         }, 3000);
     };
 
+    const onRightClick = (e) => {
+        e.preventDefault();
+    };
+    
     return (
         <>
             {error && <h1>{error}</h1>}
-            <ul className='chats'>
+            <ul className='chats' onContextMenu={onRightClick}>
                 {chats.map((chat) => {
                     return (
                     <ChatCard

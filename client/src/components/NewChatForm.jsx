@@ -1,8 +1,14 @@
-import React, {useState} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 
 
 const NewChatForm = ({chatService, onError, userID, userName}) => {
     const [chat, setChat] = useState('');
+
+    // chat scroll focus move to bottom
+    useLayoutEffect(() => {
+        const chatScroll = document.getElementsByClassName('chats');
+        chatScroll[0].scrollTop = chatScroll[0].scrollHeight;
+    })
 
     const onSubmit = async (event) => {
         event.preventDefault();
