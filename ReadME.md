@@ -16,4 +16,4 @@
 
 - Profile
 
-  ![]()![prototype04](https://github.com/Bigone0617/amondTalk/tree/master/img/prototype04.JPG)
+  ![](https://github.com/Bigone0617/amondTalk/tree/master/img/prototype04.JPG)
