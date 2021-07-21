@@ -19,6 +19,10 @@ const ChatCard = memo(({chat, owner, user, chatService}) => {
             .then(() => window.location.reload());
     }
 
+    const isLink = (text) => {
+        return text.indexOf('http') > -1 ? true : false;
+    }
+
     return (
         <li className='chat'>
                 {owner ? (
@@ -28,7 +32,9 @@ const ChatCard = memo(({chat, owner, user, chatService}) => {
                                         <button onClick={clickDeleteBtn} id={chatID}>❌</button>
                                     </div>) : <></>} 
                         <div className='chat-body-my' onContextMenu={onRightClick}>
-                            <text>{text}</text>
+                            {
+                                isLink(text) ? <a href={text} target="_blank" rel="noreferrer"><div>{text}</div></a> : <div>{text}</div>
+                            }
                         </div>
                         <div className='chat-time-my'>
                             {parseDate(createdAt)}
@@ -38,7 +44,9 @@ const ChatCard = memo(({chat, owner, user, chatService}) => {
                     <section className='chat-container'>
                         <Avatar url={url} userName={userName} userID={userID}/>
                         <div className='chat-body'>
-                            <text>{text}</text>
+                            {
+                                isLink(text) ? <a href={text} target="_blank" rel="noreferrer"><div>{text}</div></a> : <div>{text}</div>
+                            }
                         </div>
                         <div className='chat-time'>
                             {parseDate(createdAt)}
