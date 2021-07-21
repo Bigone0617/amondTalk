@@ -4,7 +4,7 @@ import parseDate from '../util/date';
 import Avatar from './Avatar';
 
 const ChatCard = memo(({chat, owner, user, chatService}) => {
-    const {text, createdAt, chatID, userName, url} = chat;
+    const {text, createdAt, chatID, userName, url, userID} = chat;
     const [rightClick, setRightClick] = useState(false);
 
     const onRightClick = (e) => {
@@ -36,7 +36,7 @@ const ChatCard = memo(({chat, owner, user, chatService}) => {
                     </section>
                     ) : (
                     <section className='chat-container'>
-                        <Avatar url={url} userName={userName}/>
+                        <Avatar url={url} userName={userName} userID={userID}/>
                         <div className='chat-body'>
                             <text>{text}</text>
                         </div>

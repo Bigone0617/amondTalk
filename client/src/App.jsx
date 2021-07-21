@@ -5,6 +5,7 @@ import { useAuth } from './context/AuthConterxt';
 import AllChat from './pages/AllChat';
 // import MyChat from './pages/MyChat';
 import Profile from './pages/profile';
+import Detail from './pages/Detail';
 
 function App({authService, chatService}) {
   const history = useHistory();
@@ -50,6 +51,9 @@ function App({authService, chatService}) {
             </Route> */}
             <Route exact path='/profile'>
               <Profile authService={authService} chatService={chatService} id={user.id}/>
+            </Route>
+            <Route exact path='/Detail/:userID'>
+              <Detail authService={authService}/>
             </Route>
           </>
         )

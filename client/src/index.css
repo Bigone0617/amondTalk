@@ -244,12 +244,47 @@ button {
 
 /* profile */
 .profileImg-wrap {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
 }
+
 .profileImg {
   width: 250px;
   height: 250px;
   border-radius: 45%;
   border: 2px solid var(--color-yellow);
+}
+
+/* another profile */
+.detailImg-wrap {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.detailImg {
+  width: 250px;
+  height: 250px;
+  border-radius: 45%;
+  border: 2px solid var(--color-yellow);
+}
+
+.detail-wrap {
+  width: 100%;
+  color: #969696;
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.detail-title {
+  width: 20%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.detail-value {
+  width: 60%;
+  display: inline-block;
 }

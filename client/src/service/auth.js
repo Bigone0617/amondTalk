@@ -53,6 +53,14 @@ export default class AuthService {
         headers: { Authorization: `Bearer ${token}` },
       })
     }
+
+    async findById(userID){
+      const token = this.tokenStorage.getToken();
+      return this.http.fetch(`/auth/findById/${userID}`, {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${token}` },
+      })
+    }
   
     async logout() {
       this.tokenStorage.clearToken();
