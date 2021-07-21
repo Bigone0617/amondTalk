@@ -23,6 +23,7 @@ export const User = sequelize.define(
         allowNull: false,
       },
       url: DataTypes.TEXT,
+      stmsg: DataTypes.TEXT,
     },
     { timestamps: false }
   );
@@ -49,6 +50,7 @@ export async function updateUser(updateData) {
                    user.userName = updateData.userName;
                    user.email = updateData.email;
                    user.url = updateData.url;
+                   user.stmsg = updateData.stmsg;
                    return user.save();
                });
 }

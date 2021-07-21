@@ -28,10 +28,11 @@ export default class AuthService {
       return data;
     }
 
-    async updateUser(id, userName, email, url) {
+    // id, 닉네임, email, url, 상태메세지
+    async updateUser(id, userName, email, url, stmsg) {
       const data = await this.http.fetch('/auth/updateUser', {
         method: 'PUT',
-        body: JSON.stringify({id, userName, email, url}),
+        body: JSON.stringify({id, userName, email, url, stmsg}),
       });
 
       return data;

@@ -110,8 +110,13 @@ button {
 .auth-form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   color: var(--color-black);
   padding: 16px 32px;
+}
+.auth-form div {
+  display: flex;
+  justify-content: center;
 }
 
 .form-btn {
@@ -235,4 +240,16 @@ button {
 .chat-input {
   width: 100%;
   margin-right: 4px;
+}
+
+/* profile */
+.profileImg-wrap {
+  display: flex;
+  justify-content: center;
+}
+.profileImg {
+  width: 250px;
+  height: 250px;
+  border-radius: 45%;
+  border: 2px solid var(--color-yellow);
 }

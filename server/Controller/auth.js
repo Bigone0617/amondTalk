@@ -22,7 +22,7 @@ export async function signIn(req, res){
    const token = createJwtToken(user.id);
    const {userName, email, url} = user;
 
-   res.status(200).json({ token, id, userName, url, email });
+   res.status(200).json({ token, id, userName, url, email});
 };
 
 // 회원가입
@@ -93,5 +93,5 @@ function createJwtToken(id) {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    res.status(200).json({ token: req.token, userName: user.userName, id: user.id, email: user.email, url: user.url });
+    res.status(200).json({ token: req.token, userName: user.userName, id: user.id, email: user.email, url: user.url, stmsg: user.stmsg });
   }

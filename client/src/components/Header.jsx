@@ -6,7 +6,6 @@ const Header = memo(({id, userName, onLogout, onAllChats, onProfile}) => {
             <div className='logo'>
                 <img src='./img/logo.jpg' alt='Simple Chat Logo' className='logo-img' />
                 <h1 className='logo-name'>Amond Talk</h1>
-                {userName && <span className='logo-user'>@{userName}</span>}
             </div>
             {userName && (
                 <nav className='menu'>
