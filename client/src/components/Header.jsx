@@ -1,4 +1,6 @@
 import React, {memo} from 'react';
+import {VscAccount, VscChromeClose} from 'react-icons/vsc';
+import {BsChat} from 'react-icons/bs';
 
 const Header = memo(({id, userName, onLogout, onAllChats, onProfile}) => {
     return (
@@ -9,9 +11,9 @@ const Header = memo(({id, userName, onLogout, onAllChats, onProfile}) => {
             </div>
             {userName && (
                 <nav className='menu'>
-                    <button onClick={onAllChats}>All Chats</button>
-                    <button onClick={onProfile}>Profile</button>
-                    <button className='menu-item' onClick={onLogout}>Logout</button>
+                    <button onClick={onAllChats}><BsChat size="20"/></button>
+                    <button onClick={onProfile}><VscAccount size="20"/></button>
+                    <button className='menu-item' onClick={onLogout}><VscChromeClose size="20"/></button>
                 </nav>
             )}
         </header>
