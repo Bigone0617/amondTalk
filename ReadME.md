@@ -5,6 +5,10 @@
 - Back End : node.js (Express)
 - Front End : React(Hook)
 
+## Deploy
+- Back End : Heroku
+- Front End : netlify
+
 ## Prototype
 
 - Sign Up
