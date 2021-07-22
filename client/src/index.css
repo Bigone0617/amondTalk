@@ -60,6 +60,10 @@ button {
   padding: 8px;
 }
 
+.login-wrap {
+  max-width: 300px;
+}
+
 .logo {
   display: flex;
   justify-content: space-between;
@@ -81,6 +85,16 @@ button {
   font-size: 0.7rem;
   color: var(--color-blue);
   padding-top: 8px;
+}
+
+.sign-wrap {
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.sign-wrap img {
+  width: 300px;
+  border-radius: 50%;
 }
 
 .menu {

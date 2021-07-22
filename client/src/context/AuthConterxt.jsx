@@ -20,7 +20,10 @@ export function AuthProvider({authService, authErrorEventBus, children}){
     }, [authErrorEventBus]);
 
     useEffect(() => {
-        authService.me().then(setUser).catch(console.error);
+        authService
+            .me()
+            .then(setUser)
+            .catch(console.log);
     }, [authService]);
 
 
@@ -28,13 +31,16 @@ export function AuthProvider({authService, authErrorEventBus, children}){
         async(id, pw, userName, email, url) => {
             authService
                 .signup(id, pw, userName, email, url)
-                .then((user) => setUser(user));
+                .then((user) => setUser(user))
+                .catch(onError);
         }, [authService]
     )
 
     const logIn = useCallback(
-        async(id, pw) => 
-            authService.login(id, pw).then((user) => {console.log(user); setUser(user)}),
+        async(id, pw) => {
+            authService.login(id, pw)
+                       .then((user) => {console.log(user); setUser(user)})
+                       .catch(onError)},
         [authService]
     )
 
@@ -52,14 +58,21 @@ export function AuthProvider({authService, authErrorEventBus, children}){
         }), [user, signUp, logIn, logout]
     );
 
+    const onError = (error) => {
+        alert(error);
+    }
+
+
     return(
         <AuthContext.Provider value={context}>
             { user ? (
                 children
             ) : (
-                <div>
+                <div className='sign-wrap'>
+                    <img src='./img/logo.jpg' alt='logo'/>
                     <Login signUp={signUp} logIn={logIn}/>
                 </div>
+                
             )}
         </AuthContext.Provider>    
     );
