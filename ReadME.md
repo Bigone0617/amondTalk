@@ -17,3 +17,7 @@
 - Profile
 
   ![](https://github.com/Bigone0617/amondTalk/blob/master/img/prototype04.JPG?raw=true)
+  
+- another Profile
+  
+  ![](https://github.com/Bigone0617/amondTalk/blob/master/img/prototype05.JPG?raw=true)
