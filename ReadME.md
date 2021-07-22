@@ -1,4 +1,9 @@
 ## Amond Talk
+- https://amond-talk.netlify.app/
+
+## Skill 
+- Back End : node.js (Express)
+- Front End : React(Hook)
 
 ### Prototype ###
 
