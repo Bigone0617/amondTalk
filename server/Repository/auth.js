@@ -73,5 +73,5 @@ export async function findById(id){
 
 // 모든 유저 정보 가져오기
 export async function getAllUser(){
-    return User.findAll();
+    return User.findAll({order: ['userName']});
 }

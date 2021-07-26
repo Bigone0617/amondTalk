@@ -1,7 +1,8 @@
 export default class AuthService {
-    constructor(http, tokenStorage) {
+    constructor(http, tokenStorage, socket) {
       this.http = http;
       this.tokenStorage = tokenStorage;
+      this.socket = socket;
     }
   
     async signup(id, pw, userName, email, url) {
@@ -64,6 +65,10 @@ export default class AuthService {
   
     async logout() {
       this.tokenStorage.clearToken();
+    }
+
+    onSync(callback) {
+      return this.socket.onSync('users', callback);
     }
   }
   

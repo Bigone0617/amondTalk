@@ -6,6 +6,7 @@ import AllChat from './pages/AllChat';
 // import MyChat from './pages/MyChat';
 import Profile from './pages/profile';
 import Detail from './pages/Detail';
+import Friends from './pages/Friends';
 
 function App({authService, chatService}) {
   const history = useHistory();
@@ -15,9 +16,9 @@ function App({authService, chatService}) {
     history.push('/');
   };
 
-  // const onMyChats = () => {
-  //   history.push(`/myChats`);
-  // }
+  const onFriend = () => {
+    history.push(`/friends`);
+  }
 
   const onLogout = () => {
     if(window.confirm('Do you want to log out?')){
@@ -36,8 +37,8 @@ function App({authService, chatService}) {
         id = {user.id}
         userName = {user.userName}
         onLogout = {onLogout}
+        onFriend = {onFriend}
         onAllChats = {onAllChats}
-        // onMyChats = {onMyChats}
         onProfile = {onProfile}
       />
       <Switch>
@@ -46,9 +47,9 @@ function App({authService, chatService}) {
             <Route exact path='/'>
               <AllChat authService={authService} chatService={chatService}/>
             </Route>
-            {/* <Route exact path='/myChats'>
-              <MyChat chatService={chatService}/>
-            </Route> */}
+            <Route exact path='/friends'>
+              <Friends authService={authService} userID={user.id}/>
+            </Route>
             <Route exact path='/profile'>
               <Profile authService={authService} chatService={chatService} id={user.id}/>
             </Route>
