@@ -8,21 +8,40 @@ export async function getAllFriends(req, res) {
 
 export async function findById(req, res) {
     const {userID, friendID} = req.params;
-    console.log(`Controller : ${userID} , ${friendID}`);
     const isFriend = await friendRepository.findById(userID, friendID);
     res.status(200).json(isFriend !== null ? true : false);
 }
 
 export async function addFriend(req, res) {
     const {userID, friendID} = req.body;
-    console.log(`controller : ${userID} ${friendID}`);
 
-    const test = await friendRepository.addFriend({
+    // 내친구창에 친구 추가
+    friendRepository.addFriend({
         userID,
         friendID,
         roomID: null,
         favorites: '0'
     });
+    // 친구 친구창에 나 추가
+    friendRepository.addFriend({
+        userID:friendID,
+        friendID: userID,
+        roomID: null,
+        favorites: '0'
+    });
 
-    res.status(201).json({test});
+    res.sendStatus(201);
+}
+
+export async function createChatRoom(req, res) {
+    const {userID, friendID} = req.body;
+    const isAlready = await friendRepository.getRoomID(userID, friendID);
+
+    if(isAlready['roomID'] !== null ){
+        return res.status(200).json(isAlready['roomID']);
+    }else{
+        const findData =  await friendRepository.getFID(userID, friendID);
+        const returnfID = await friendRepository.createChatRoom(findData['fID'], userID, friendID);
+        return res.status(201).json(returnfID);
+    }
 }

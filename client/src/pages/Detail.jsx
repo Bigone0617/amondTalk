@@ -1,17 +1,30 @@
 import React, { memo, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
-const Detail = memo(({authService}) => {
+const Detail = memo(({userID, authService, friendService}) => {
     const location = useLocation();
     const [user, setUser] = useState({});
+    const history = useHistory();
+
     useEffect(() => {
         authService
             .findById(location.state.userID)
             .then((data)=> {
-                console.log(data);
                 setUser(data)
             });
-    },[authService, location.state.userID])
+    },[authService, location.state.userID]);
+
+    const chatStart = () => {
+        // 새로운 챗 만들면서 페이지 이동
+        friendService
+            .createChatRoom(userID, user.id)
+            .then((data) => {
+                history.push({
+                    pathname: `/chat/${data}`,
+                    state: {roomID: data}
+                })
+            });
+    }
 
     return (
         <>
@@ -41,6 +54,11 @@ const Detail = memo(({authService}) => {
                 <div className='detail-value'>
                     {user.stmsg}
                 </div>
+            </div>
+            <div className='detail-chatBtn-wrap'>
+                <button className='detail-chatBtn' onClick={chatStart}>
+                    채팅하기
+                </button>
             </div>
         </>
     )

@@ -15,13 +15,11 @@ const Friends = memo(({authService, userID, friendService}) => {
         friendService
             .getAllFriends(userID)
             .then((data) => {
-                console.log(data);
                 setFriends(data);
             });
         authService
             .findById(userID)
             .then((data) => {
-                console.log(data);
                 setMe(data)
             });
     }, [friendService, authService, userID]);

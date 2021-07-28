@@ -40,7 +40,6 @@ const Profile = memo(({authService, chatService, id}) => {
         } = event;
 
         if(name === 'url'){
-            console.log(value.length);
             if(value.length > 257){
                 alert('url 주소의 길이는 256자 이내로 설정해주세요 :)');
                 return false;

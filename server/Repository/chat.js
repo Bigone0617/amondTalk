@@ -35,6 +35,10 @@ export const Chat = sequelize.define(
           type: DataTypes.STRING(45),
           allowNull: false,
           defaultValue: false
+      },
+      roomID: {
+        type: DataTypes.STRING(8),
+        allowNull: false,
       }
     },
   );
@@ -50,6 +54,7 @@ const INCLUDE_USER = {
     'isDelete',
     'createdAt',
     'updatedAt',
+    'roomID',
     [Sequelize.col('user.id'), 'id'],
     [Sequelize.col('user.url'), 'url'],
     [Sequelize.col('user.userName'), 'userName'],
@@ -67,9 +72,8 @@ const ORDER_DESC = {
 
 //새로운 chat 만들기
 export async function createChat(chatData){
-    const {text, userID, userName} = chatData;
-
-    return Chat.create({ text, userID, userName }).then((data) => data.dataValues);
+    const {text, userID, userName, roomID} = chatData;
+    return Chat.create({ text, userID, userName, roomID }).then((data) => data.dataValues);
 }
 
 // delete chat
@@ -84,9 +88,12 @@ export async function deleteChat(chatID){
 
 //! ========================== CRUD END==========================//
 // 모든 채팅 가져오기
-export async function getAllChat(){
+export async function getAllChat(roomID){
   return Chat.findAll({ 
-    where: {isDelete : '0'},
+    where: {
+      isDelete : '0',
+      roomID: roomID
+    },
     ...INCLUDE_USER,
     ...ORDER_DESC,
   });

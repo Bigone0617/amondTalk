@@ -45,6 +45,7 @@ const INCLUDE_USER = {
         [Sequelize.col('user.id'), 'id'],
         [Sequelize.col('user.userName'), 'userName'],
         [Sequelize.col('user.url'), 'url'],
+        [Sequelize.col('user.stmsg'), 'stmsg'],
     ],
     include: {
         model: User,
@@ -59,7 +60,6 @@ const ORDER_DESC = {
 //! ========================== CRUD START==========================//
 // 친구 추가
 export async function addFriend(friendData){
-    console.log(`repository: ${friendData}`);
     Friend.create({
       userID: friendData.userID,
       friendID: friendData.friendID
@@ -85,4 +85,33 @@ export async function findById(userID, friendID) {
       friendID
     }
   });
+}
+
+// 채팅 만들기
+export async function createChatRoom(fID, userID, friendID) {
+  
+  // 내 roomID에 fID 업데이트
+  Friend.findOne({where : {userID, friendID}})
+        .then((friend) => {
+          friend.roomID = fID;
+          friend.save();
+        });
+  // 친구 roomID에 내 fID 업데이트
+  Friend.findOne({where : {friendID: userID, userID: friendID}})
+        .then((friend) => {
+          friend.roomID = fID;
+          friend.save();
+        });
+        
+  return fID;
+}
+
+// fid 얻기
+export async function getFID(userID, friendID) {
+  return Friend.findOne({where : {userID, friendID}});
+}
+
+// roomID 얻기
+export async function getRoomID(userID, friendID) {
+  return Friend.findOne({where : {userID, friendID}});
 }

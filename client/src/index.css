@@ -303,6 +303,20 @@ button {
   display: inline-block;
 }
 
+.detail-chatBtn-wrap {
+  width: 100%;
+  text-align: center;
+}
+
+.detail-chatBtn {
+  height: 30px;
+  width: 150px;
+  margin-top: 30px;
+  background-color: var(--color-yellow);
+  color: var(--color-black);
+  border-radius: 5%;
+}
+
 /* search component*/
 .search {
   width: 100%;
@@ -479,4 +493,62 @@ button {
   box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
   position: relative;
   top: 2px;
+}
+
+/*chatRooms*/
+.chatRooms-title-wrap {
+  color: var(--color-black);
+}
+
+.chatRooms-title {
+  margin-left: 20px;
+  font-size: 30px;
+  line-height: 50px;
+  width: 85%;
+  display: inline-block;
+}
+
+.chatRoomsIcon {
+  color: var(--color-black);
+  display: inline-block;
+  width: 10%;
+}
+
+.chatRoomsList {
+  padding-inline-start: 0px;
+  list-style: none;
+  margin-top: 0px;
+}
+
+.chatRoom-container {
+  color: var(--color-black);
+  height: 100px;
+  margin-bottom: 1px;
+}
+
+.chatRoom-container:hover {
+  background-color: var(--color-lightGrey);
+}
+
+.chatRoom-img-wrap {
+  width: 20%;
+  height: 100px;
+  float: left;
+  text-align: center;
+}
+
+.chatRoom-img {
+  height: 70px;
+  width: 70px;
+  border: 1px solid var(--color-yellow);
+  border-radius: 45%;
+  margin-top: 15px;
+}
+
+.chatRoom-name {
+  width: 40%;
+  float: left;
+  height: 100px;
+  margin-left: 10px;
+  line-height: 50px;
 }

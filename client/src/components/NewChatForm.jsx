@@ -1,7 +1,7 @@
 import React, {useLayoutEffect, useState} from 'react';
 
 
-const NewChatForm = ({chatService, onError, userID, userName}) => {
+const NewChatForm = ({chatService, onError, userID, userName, roomID}) => {
     const [chat, setChat] = useState('');
 
     // chat scroll focus move to bottom
@@ -15,7 +15,7 @@ const NewChatForm = ({chatService, onError, userID, userName}) => {
 
         if(chat.trim() !== ''){
             chatService
-                .postChat(chat, userID, userName)
+                .postChat(chat, userID, userName, roomID)
                 .then(() => {
                     setChat('')
                 })

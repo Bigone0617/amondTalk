@@ -27,10 +27,29 @@ export default class FriendService {
       // 친구인지 아닌지 확인
       async findById(datas) {
         const token = this.tokenStorage.getToken();
-        console.log(datas);
         return this.http.fetch(`/friend/findById/${datas.userID}/${datas.friendID}`, {
             method:'GET',
             headers: { Authorization: `Bearer ${token}` },
         })
+      }
+
+      // 채팅 만들기
+      async createChatRoom(userID, friendID) {
+        const data = await this.http.fetch('/friend/createChatRoom', {
+          method: 'PUT',
+          body: JSON.stringify({userID, friendID})
+        });
+
+        return data;
+      }
+
+      // 이미 채팅중인지 확인
+      async getRoomID(userID, friendID) {
+        const token = this.tokenStorage.getToken();
+        const roomID = await this.http.fetch(`/friend/getRoomID/${userID}/${friendID}`, {
+          method: 'GET',
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        return roomID;
       }
 }

@@ -2,23 +2,24 @@ import { Switch, Route, useHistory} from 'react-router-dom';
 import Header from './components/Header';
 import { useAuth } from './context/AuthConterxt';
 
-import AllChat from './pages/AllChat';
+import ChatPage from './pages/ChatPage';
 // import MyChat from './pages/MyChat';
 import Profile from './pages/profile';
 import Detail from './pages/Detail';
 import Friends from './pages/Friends';
 import AddFriends from './pages/AddFriends';
+import ChatRooms from './pages/ChatRooms';
 
 function App({authService, chatService, friendService}) {
   const history = useHistory();
   const {user, logout} = useAuth();
 
   const onAllChats = () => {
-    history.push('/');
+    history.push('/chats');
   };
 
   const onFriend = () => {
-    history.push(`/friends`);
+    history.push(`/`);
   }
 
   const onLogout = () => {
@@ -46,16 +47,31 @@ function App({authService, chatService, friendService}) {
         (
           <>
             <Route exact path='/'>
-              <AllChat authService={authService} chatService={chatService}/>
-            </Route>
-            <Route exact path='/friends'>
               <Friends authService={authService} userID={user.id} friendService={friendService}/>
+            </Route>
+            <Route exact path='/chats'>
+              <ChatRooms 
+                userID={user.id} 
+                authService={authService} 
+                chatService={chatService} 
+                friendService={friendService}
+              />
+            </Route>
+            <Route exact path='/chat/:fID'>
+              <ChatPage 
+                authService={authService} 
+                chatService={chatService} 
+              />
             </Route>
             <Route exact path='/profile'>
               <Profile authService={authService} chatService={chatService} id={user.id}/>
             </Route>
             <Route exact path='/Detail/:userID'>
-              <Detail authService={authService}/>
+              <Detail 
+                userID={user.id}
+                authService={authService} 
+                friendService={friendService}
+              />
             </Route>
             <Route exact path='/AddFriends'>
               <AddFriends userID={user.id} authService={authService} friendService={friendService}/>

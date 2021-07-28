@@ -13,18 +13,18 @@ export default class ChatService {
         });
     }
 
-    async getAllChats() {
-        return this.http.fetch('/chat/getAllChat', {
+    async getAllChats(roomID) {
+        return this.http.fetch(`/chat/getAllChat/${roomID}`, {
             method: 'GET',
             headers: this.getHeaders(),
         });
     }
 
-    async postChat(text, userID, userName) {
+    async postChat(text, userID, userName, roomID) {
         return this.http.fetch('/chat/createChat', {
             method: 'POST',
             headers: this.getHeaders(),
-            body: JSON.stringify({ text, userID, userName }),
+            body: JSON.stringify({ text, userID, userName, roomID }),
         });
     }
 

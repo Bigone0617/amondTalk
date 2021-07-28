@@ -11,6 +11,9 @@ router.get('/getAllFriends/:userID', friendController.getAllFriends);
 router.get('/findById/:userID/:friendID', friendController.findById);
 // 친구추가
 router.post('/addFriend', friendController.addFriend);
+// 채팅 만들기
+router.put('/createChatRoom', friendController.createChatRoom);
+
 
 
 export default router;

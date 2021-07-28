@@ -1,4 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthConterxt';
 import ChatCard from './ChatCard';
 import NewChatForm from './NewChatForm';
@@ -7,16 +8,18 @@ const Chats = memo(({authService, chatService}) => {
     const [chats, setChats] = useState([]);
     const [error, setError] = useState('');
     const {user} = useAuth();
+    const location = useLocation();
+    const roomID = location.state.roomID;
 
     useEffect(() => {
         chatService
-            .getAllChats()
+            .getAllChats(roomID)
             .then((chats) => setChats([...chats['chats']]))
             .catch(onError);
 
         const stopSync = chatService.onSync((chat) => onCreated(chat));
         return () => stopSync();
-    }, [chatService]);
+    }, [chatService, roomID]);
 
     const onCreated = (chat) => {
         setChats((chats) => [...chats, chat]);
@@ -53,7 +56,7 @@ const Chats = memo(({authService, chatService}) => {
                     />
                 )})}
             </ul>
-            <NewChatForm chatService={chatService} onError={onError} userID ={user.id} userName={user.userName}/>
+            <NewChatForm chatService={chatService} onError={onError} userID ={user.id} userName={user.userName} roomID={roomID}/>
         </>
     )
 });

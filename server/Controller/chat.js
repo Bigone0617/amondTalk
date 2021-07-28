@@ -25,7 +25,8 @@ export async function deleteChat(req, res) {
 
 //get all chat
 export async function getAllChat(req, res) {
-    const chats = await chatRepository.getAllChat();
+    const {roomID} = req.params;
+    const chats = await chatRepository.getAllChat(roomID);
     res.status(200).json({chats});
 };
 
