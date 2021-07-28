@@ -34,6 +34,14 @@ const Detail = memo(({authService}) => {
                     {user.email}
                 </div>
             </div>
+            <div className='detail-wrap'>
+                <div className='detail-title'>
+                    상태메세지
+                </div>
+                <div className='detail-value'>
+                    {user.stmsg}
+                </div>
+            </div>
         </>
     )
 });

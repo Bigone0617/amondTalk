@@ -11,7 +11,7 @@ const FriendCard = memo(({user}) => {
         });
     } 
     return (
-        <li onClick={clickUser}>
+        <li onClick={clickUser} key={user.id}>
             <section className='friend-container'>
                 <div className='friend-img-wrap'>
                     <img className='friend-img' src={user.url ? user.url : emptyUrl} alt='freind img'/>
@@ -19,6 +19,10 @@ const FriendCard = memo(({user}) => {
                 <div className='friend-name'>
                     <h5>{user.userName}</h5>
                 </div>
+                {
+                    user.stmsg &&  <div className='friend-stmsg'> {user.stmsg} </div>
+                }
+               
             </section>
         </li>
     )

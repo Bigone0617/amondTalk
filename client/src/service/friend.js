@@ -1,0 +1,36 @@
+export default class FriendService {
+    constructor(http, tokenStorage, socket) {
+        this.http = http;
+        this.tokenStorage = tokenStorage;
+        this.socket = socket;
+      }
+
+      async getAllFriends(userID) {
+        const token = this.tokenStorage.getToken();
+        return this.http.fetch(`/friend/getAllFriends/${userID}`, {
+            method:'GET',
+            headers: { Authorization: `Bearer ${token}` },
+        });
+      }
+
+      async addFriend(datas) {
+        const data = await this.http.fetch('/friend/addFriend', {
+            method: 'POST',
+            body: JSON.stringify({
+              userID: datas.userID,
+              friendID: datas.friendID
+            })
+        });
+        return data;
+      }
+
+      // 친구인지 아닌지 확인
+      async findById(datas) {
+        const token = this.tokenStorage.getToken();
+        console.log(datas);
+        return this.http.fetch(`/friend/findById/${datas.userID}/${datas.friendID}`, {
+            method:'GET',
+            headers: { Authorization: `Bearer ${token}` },
+        })
+      }
+}

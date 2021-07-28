@@ -93,11 +93,14 @@ function createJwtToken(id) {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    res.status(200).json({ token: req.token, userName: user.userName, id: user.id, email: user.email, url: user.url});
+    res.status(200).json({ token: req.token, userName: user.userName, id: user.id, email: user.email, url: user.url, stmsg: user.stmsg});
   }
 
   export async function getById(req, res, next) {
       const id = req.params.userID
       const user = await userRepository.findById(id);
-      res.status(200).json({ userName: user.userName, email: user.email, url: user.url});
+      if(!user){
+        return res.status(200).json(null);
+      }
+      res.status(200).json({ id: user.id, userName: user.userName, email: user.email, url: user.url, stmsg: user.stmsg});
   }

@@ -7,8 +7,9 @@ import AllChat from './pages/AllChat';
 import Profile from './pages/profile';
 import Detail from './pages/Detail';
 import Friends from './pages/Friends';
+import AddFriends from './pages/AddFriends';
 
-function App({authService, chatService}) {
+function App({authService, chatService, friendService}) {
   const history = useHistory();
   const {user, logout} = useAuth();
 
@@ -48,13 +49,16 @@ function App({authService, chatService}) {
               <AllChat authService={authService} chatService={chatService}/>
             </Route>
             <Route exact path='/friends'>
-              <Friends authService={authService} userID={user.id}/>
+              <Friends authService={authService} userID={user.id} friendService={friendService}/>
             </Route>
             <Route exact path='/profile'>
               <Profile authService={authService} chatService={chatService} id={user.id}/>
             </Route>
             <Route exact path='/Detail/:userID'>
               <Detail authService={authService}/>
+            </Route>
+            <Route exact path='/AddFriends'>
+              <AddFriends userID={user.id} authService={authService} friendService={friendService}/>
             </Route>
           </>
         )

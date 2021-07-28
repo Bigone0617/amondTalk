@@ -364,11 +364,23 @@ button {
 }
 
 .friend-name {
-  width: 70%;
+  width: 40%;
+  float: left;
+  height: 100px;
+  margin-left: 10px;
+  line-height: 50px;
+}
+
+.friend-stmsg {
+  width: 30%;
   float: right;
   height: 100px;
+  color: var(--color-darkGrey);
   margin-right: 10px;
-  line-height: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 80px;
 }
 
 .friend-container-me {
@@ -385,4 +397,86 @@ button {
 .friendTitle {
   color: var(--color-darkGrey);
   margin-left: 20px;
+}
+
+/* add friends */
+.addFriend-wrap {
+  color: var(--color-darkGrey);
+  height: 100%;
+}
+
+.addFriend-wrap h3 {
+  margin-left: 10px;
+}
+
+.searchID {
+  border-bottom: 2px solid var(--color-lightGrey);
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 30px;
+  margin-top: 30px;
+}
+
+.addFriend-input {
+  border: 0px;
+  background-color: var(--color-white);
+}
+
+.addFriend-input:focus {
+  outline: none;
+}
+
+.searchFriend-btn {
+  width: 20px;
+  height: 20px;
+  color: var(--color-darkGrey);
+  float: right;
+  margin-right: 10px;
+}
+
+.searchFriend-clear {
+  width: 20px;
+  height: 20px;
+  color: var(--color-darkGrey);
+  float: right;
+  margin-right: 10px;
+}
+
+.searchFriend-wrap {
+  height: 80%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.searchFriend-none {
+  vertical-align: middle;
+  line-height: 600px;
+}
+
+.searchFriend-wrap img {
+  margin-top: 30px;
+  width: 150px;
+  height: 150px;
+  border-radius: 40%;
+  border: 2px solid var(--color-yellow);
+}
+
+.searchFriend-userName {
+  color: #141518;
+  font-size: 25px;
+}
+
+.addFriend-btn {
+  height: 30px;
+  width: 150px;
+  margin-top: 30px;
+  background-color: var(--color-yellow);
+  color: var(--color-black);
+  border-radius: 5%;
+}
+
+.addFriend-btn:active {
+  box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+  position: relative;
+  top: 2px;
 }

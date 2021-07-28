@@ -11,6 +11,8 @@ import {AuthProvider, AuthErrorEventBus} from './context/AuthConterxt';
 import AuthService from './service/auth';
 // chat api 연결 로직
 import ChatService from './service/chat';
+// friend api 연결 로직
+import FriendService from './service/friend';
 import HttpClient from './network/http';
 // token 관련 로직
 import TokenStorage from './db/token';
@@ -23,6 +25,7 @@ const authErrorEventBus = new AuthErrorEventBus();
 const socketClient = new Socket(baseURL, () => tokenStorage.getToken());
 const authService = new AuthService(httpClient, tokenStorage, socketClient);
 const chatService = new ChatService(httpClient, tokenStorage, socketClient);
+const friendService = new FriendService(httpClient, tokenStorage, socketClient);
 
 ReactDOM.render(
   <React.StrictMode>
@@ -31,7 +34,7 @@ ReactDOM.render(
         authService={authService}
         authErrorEventBus={authErrorEventBus}
       >
-        <App authService={authService} chatService={chatService}/>
+        <App authService={authService} chatService={chatService} friendService={friendService}/>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,

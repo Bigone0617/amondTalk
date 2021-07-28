@@ -1,11 +1,11 @@
 import React, { memo, useState } from 'react';
 
-const Search = memo(({setFriends, authService, userID}) => {
+const Search = memo(({setFriends, friendService, userID}) => {
     const [searchF, setSearchF] = useState([]);
     const saerchFriends = (e) => {
-        authService
-            .getAllUsers()
-            .then((data) => setSearchF(data.filter(d => d.id !== userID)));
+        friendService
+            .getAllFriends(userID)
+            .then((data) => setSearchF(data));
         if(e.target.value === ''){
             setFriends(searchF);
             console.log(searchF)
@@ -19,7 +19,7 @@ const Search = memo(({setFriends, authService, userID}) => {
 
     return (
         <div className='search'>
-            <input type='text' onChange={saerchFriends}></input>
+            <input type='text' onChange={saerchFriends} autoFocus></input>
         </div>
     )
 });

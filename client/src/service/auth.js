@@ -62,7 +62,7 @@ export default class AuthService {
         headers: { Authorization: `Bearer ${token}` },
       })
     }
-  
+
     async logout() {
       this.tokenStorage.clearToken();
     }

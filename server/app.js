@@ -9,6 +9,7 @@ import helmet from 'helmet';
 // local import
 import authRouter from './Router/auth.js';
 import chatRouter from './Router/chat.js';
+import friendRouter from './Router/friend.js'
 import { config } from './config.js';
 import { sequelize } from './database/database.js';
 import { initSocket } from './connection/socket.js';
@@ -27,6 +28,7 @@ app.use(morgan('tiny'));
 
 app.use('/auth', authRouter);
 app.use('/chat', chatRouter);
+app.use('/friend', friendRouter);
 
 app.use((error, req, res, next) => {
     console.error(error);
