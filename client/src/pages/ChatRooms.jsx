@@ -26,7 +26,7 @@ const ChatRooms = memo(({userID, authService, chatService, friendService}) => {
                 {
                     chatRooms.map((chatRoom) => {
                         return (
-                            <ChatRoom authService={authService} friendID={chatRoom.friendID} roomID={chatRoom.roomID}/>
+                            <ChatRoom authService={authService} chatService={chatService} friendID={chatRoom.friendID} roomID={chatRoom.roomID}/>
                         )
                     })
                 }

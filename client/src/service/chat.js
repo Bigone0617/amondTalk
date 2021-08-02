@@ -44,6 +44,13 @@ export default class ChatService {
         })
     }
 
+    // 마지막 채팅글 가져오기
+    async getLastChat(roomID) {
+        return this.http.fetch(`/chat/getLastChat/${roomID}`,{
+            method: 'GET'
+        })
+    }
+
     getHeaders() {
         const token = this.tokenStorage.getToken();
         return {

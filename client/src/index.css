@@ -545,10 +545,15 @@ button {
   margin-top: 15px;
 }
 
-.chatRoom-name {
-  width: 40%;
+.chatRoom-name-wrap {
   float: left;
-  height: 100px;
-  margin-left: 10px;
-  line-height: 50px;
+  width: 60%;
+}
+
+.chatRoom-text {
+  color: var(--color-darkGrey);
+}
+
+.chatRoom-time {
+  color: var(--color-darkGrey);
 }

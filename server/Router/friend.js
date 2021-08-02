@@ -9,6 +9,8 @@ const router = express.Router();
 router.get('/getAllFriends/:userID', friendController.getAllFriends);
 // 친구인지 확인하기
 router.get('/findById/:userID/:friendID', friendController.findById);
+// 모든 채팅방 가져오기
+router.get('/getAllChatRooms/:userID', friendController.getAllChatRooms);
 // 친구추가
 router.post('/addFriend', friendController.addFriend);
 // 채팅 만들기

@@ -44,3 +44,9 @@ export async function updateUserName(req, res) {
 
     res.sendStatus(200);
 }
+
+export async function getLastChat(req, res) {
+    const {roomID} = req.params;
+    const lastChat = await chatRepository.getLastChat(roomID);
+    res.status(200).json({text: lastChat[0].dataValues.text, time: lastChat[0].dataValues.chatTime});
+}

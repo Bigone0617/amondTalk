@@ -120,3 +120,12 @@ export async function updateUserName(userID, userName){
                 });
              });
 }
+
+export async function getLastChat(roomID){
+  return Chat.findAll({
+                limit : 1,
+                where : {roomID},
+                order: [['chatID', 'DESC']]
+              })
+              .then((data) => data);
+}

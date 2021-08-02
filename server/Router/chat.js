@@ -17,6 +17,8 @@ router.get('/getAllChat/:roomID', isAuth, chatController.getAllChat);
 // get my chat
 router.get('/getMyChat', isAuth, chatController.getMyChat);
 // userName이 바뀌면 chat들의 userName도 변경(좋지 않은 방법임 하지만 데이터 양이 작아서 임시적으로 이렇게 작동)
-router.put('/updateUserName', chatController.updateUserName)
+router.put('/updateUserName', chatController.updateUserName);
+// 마지막 채팅글 가져오기
+router.get('/getLastChat/:roomID', chatController.getLastChat);
 
 export default router;
