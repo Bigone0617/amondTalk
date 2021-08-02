@@ -150,16 +150,36 @@ export async function getRoomID(userID, friendID) {
 // 나의 모든 채틸 가져오기
 export async function getAllChatRooms(userID) {
   return Friend.findAll({
-    attributes: ['roomID'],
-    group: ['roomID'],
+    attributes:{
+      include: [
+        'userID',
+        'friendID',
+        'roomID',
+        [Sequelize.col('user.userName'), 'userName'],
+        [Sequelize.col('user.url'), 'url'],
+        [ 
+          Sequelize.literal('(SELECT `T`.`text` FROM (SELECT `text`, `createdAt` FROM `chats` WHERE `roomID` = `friends`.`roomID` ORDER BY `chatID` DESC LIMIT 1) AS `T`)'),
+          'text'
+        ],
+        [ 
+          Sequelize.literal('(SELECT `T`.`createdAt` FROM (SELECT `text`, `createdAt` FROM `chats` WHERE `roomID` = `friends`.`roomID` ORDER BY `chatID` DESC LIMIT 1) AS `T`)'),
+          'createdAt'
+        ]
+      ]
+    },
     where: {
       userID,
       roomID: {
         [Op.ne]: null
       }
     },
-    ...INCLUDE_USER_CHAT,
-    ...ORDER_CHATROOMS
+    include: [
+      {
+        model: User,
+        attributes:[]
+      }
+    ],
+    order: [[Sequelize.literal('createdAt'), 'DESC']],
   });
 }
 
