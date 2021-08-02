@@ -143,6 +143,34 @@ button {
   border: 2px solid var(--color-yellow);
 }
 
+/* chats */
+.chatTop-wrap {
+  width: 100%;
+  display: flex;
+}
+
+.chatBack-wrap {
+  width: 50%;
+  text-align: left;
+}
+
+.chatBack {
+  color: var(--color-red);
+}
+
+.chatClose-wrap {
+  width: 50%;
+  text-align: right;
+}
+
+.chatClose {
+  color: var(--color-white);
+  background-color: var(--color-green);
+  border-radius: 8px;
+  font-weight: bold;
+  margin: 5px;
+}
+
 .chats {
   height: 100%;
   overflow-y: auto;

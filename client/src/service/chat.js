@@ -51,6 +51,14 @@ export default class ChatService {
         })
     }
 
+    // 채팅방 나가기
+    async closeChatRoom(roomID) {
+        return this.http.fetch(`/chat/closeChatRoom`, {
+            method: 'DELETE',
+            body: JSON.stringify({roomID})
+        });
+    }
+
     getHeaders() {
         const token = this.tokenStorage.getToken();
         return {

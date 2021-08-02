@@ -1,13 +1,15 @@
 import React, { memo, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthConterxt';
 import ChatCard from './ChatCard';
 import NewChatForm from './NewChatForm';
+import {IoMdArrowRoundBack} from 'react-icons/io';
 
 const Chats = memo(({authService, chatService}) => {
     const [chats, setChats] = useState([]);
     const [error, setError] = useState('');
     const {user} = useAuth();
+    const history = useHistory();
     const location = useLocation();
     const roomID = location.state.roomID;
 
@@ -40,10 +42,34 @@ const Chats = memo(({authService, chatService}) => {
     const onRightClick = (e) => {
         e.preventDefault();
     };
+
+    const chatClose = (e) => {
+        if(window.confirm('채팅방을 나가시겠습니까?')){
+            chatService
+                .closeChatRoom(roomID)
+                .then(() => {
+                    history.push('/chats');
+                });
+        }
+    }
+
+     const backChatList = () => {
+         history.push('/chats')
+     }
     
     return (
         <>
             {error && <h1>{error}</h1>}
+            <div className='chatTop-wrap'>
+                <div className='chatBack-wrap'>
+                    <button className='chatBack' onClick={backChatList}>
+                        <IoMdArrowRoundBack size='20'/>
+                    </button>
+                </div>
+                <div className='chatClose-wrap'>
+                    <button className='chatClose' onClick={chatClose}>채팅 나가기</button>
+                </div>
+            </div>
             <ul className='chats' onContextMenu={onRightClick}>
                 {chats.map((chat) => {
                     return (

@@ -52,8 +52,6 @@ function App({authService, chatService, friendService}) {
             <Route exact path='/chats'>
               <ChatRooms 
                 userID={user.id} 
-                authService={authService} 
-                chatService={chatService} 
                 friendService={friendService}
               />
             </Route>

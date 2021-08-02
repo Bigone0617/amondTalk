@@ -1,8 +1,10 @@
 import SQ from 'sequelize';
 import { sequelize } from '../database/database.js';
 import { User } from './auth.js';
+import {Chat} from './chat.js';
 const DataTypes = SQ.DataTypes;
 const Sequelize = SQ.Sequelize;
+const Op = Sequelize.Op;
 
 export const Friend = sequelize.define(
     'friends',
@@ -34,6 +36,12 @@ export const Friend = sequelize.define(
 );
 
 Friend.belongsTo(User, {foreignKey: 'friendID'});
+Friend.belongsTo(Chat, {
+  foreignKey: {
+    name : 'roomID'
+  },
+  targetKey: 'roomID',
+});
 
 const INCLUDE_USER = {
     attributes: [
@@ -53,10 +61,33 @@ const INCLUDE_USER = {
     },
 }
 
+const INCLUDE_USER_CHAT = {
+  attributes: [
+    'userID',
+    'friendID',
+    'roomID',
+    [Sequelize.col('user.id'), 'id'],
+    [Sequelize.col('user.userName'), 'userName'],
+    [Sequelize.col('user.url'), 'url'],
+    [Sequelize.col('chat.text'), 'text'],
+    [sequelize.col('chat.createdAt'), 'createdAt']
+  ],
+  include: [{
+      model: User,
+      attributes: [],
+  },{
+      model: Chat,
+      attributes: [],
+  }]
+}
+
 const ORDER_DESC = {
     order: [['user','userName', 'ASC']],
 };
 
+const ORDER_CHATROOMS = {
+    order: [['chat', 'createdAt', 'DESC']]
+}
 //! ========================== CRUD START==========================//
 // 친구 추가
 export async function addFriend(friendData){
@@ -115,3 +146,32 @@ export async function getFID(userID, friendID) {
 export async function getRoomID(userID, friendID) {
   return Friend.findOne({where : {userID, friendID}});
 }
+
+// 나의 모든 채틸 가져오기
+export async function getAllChatRooms(userID) {
+  return Friend.findAll({
+    attributes: ['roomID'],
+    group: ['roomID'],
+    where: {
+      userID,
+      roomID: {
+        [Op.ne]: null
+      }
+    },
+    ...INCLUDE_USER_CHAT,
+    ...ORDER_CHATROOMS
+  });
+}
+
+  // 채팅방 나가기 시 관련 데이터 지우기
+  export async function closeChatRoom(roomID) {
+    return Friend.findAll({
+                    where: {roomID}
+                  })
+                  .then((datas) => {
+                    datas.map((data) => {
+                      data.roomID = null;
+                      data.save();
+                    });
+                  });
+  }

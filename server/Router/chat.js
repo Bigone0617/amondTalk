@@ -20,5 +20,7 @@ router.get('/getMyChat', isAuth, chatController.getMyChat);
 router.put('/updateUserName', chatController.updateUserName);
 // 마지막 채팅글 가져오기
 router.get('/getLastChat/:roomID', chatController.getLastChat);
+// 채팅방 나가기
+router.delete('/closeChatRoom', chatController.closeChatRoom);
 
 export default router;

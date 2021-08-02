@@ -129,3 +129,12 @@ export async function getLastChat(roomID){
               })
               .then((data) => data);
 }
+
+export async function closeChatRoom(roomID) {
+  return Chat.findAll({
+                where: {roomID}                
+              })
+              .then((datas) => {
+                datas.map((data) => data.destroy());
+              })
+}

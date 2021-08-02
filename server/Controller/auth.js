@@ -48,7 +48,7 @@ export async function signUp(req, res) {
 
     const token = createJwtToken(userId);
 
-    res.status(201).json({token, id});
+    res.status(201).json({token, id, userName});
 }
 
 // 회원 정보 수정

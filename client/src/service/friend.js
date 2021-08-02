@@ -52,4 +52,13 @@ export default class FriendService {
         });
         return roomID;
       }
+
+      // 나의 채팅창 가져오기
+      async getAllChatRooms(userID) {
+        const allChatRooms = await this.http.fetch(`/friend/getAllChatRooms/${userID}`,{
+          method: 'GET',
+        });
+
+        return allChatRooms;
+      }
 }

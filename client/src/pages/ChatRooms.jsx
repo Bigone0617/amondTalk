@@ -3,13 +3,16 @@ import {RiUserSearchLine} from 'react-icons/ri';
 
 import ChatRoom from '../components/ChatRoom';
 
-const ChatRooms = memo(({userID, authService, chatService, friendService}) => {
+const ChatRooms = memo(({userID, friendService}) => {
     const [chatRooms, setChatRooms] = useState([]);
 
     useEffect(() => {
         friendService
-            .getAllFriends(userID)
-            .then((friends) => setChatRooms(friends.filter((friend) => friend.roomID !== null)));
+            .getAllChatRooms(userID)
+            .then((friends) => {
+                console.log(friends)
+                setChatRooms(friends)
+            });
     },[friendService, userID]);
 
     return (
@@ -26,7 +29,7 @@ const ChatRooms = memo(({userID, authService, chatService, friendService}) => {
                 {
                     chatRooms.map((chatRoom) => {
                         return (
-                            <ChatRoom authService={authService} chatService={chatService} friendID={chatRoom.friendID} roomID={chatRoom.roomID}/>
+                            <ChatRoom chatRoomData={chatRoom}/>
                         )
                     })
                 }

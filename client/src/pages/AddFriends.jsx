@@ -26,18 +26,18 @@ const AddFriends = memo(({userID, authService, friendService}) => {
                     }
                 });
         }
-        
     },[friendService, userID, findFriend])
 
     const onSubmit = async (event) => {
         event.preventDefault();
-
         authService
             .findById(searchFriend)
             .then((data) => {
                 setFindFriend(data);
                 setSearched(true);
             });
+
+        
     }
 
     const onChange = (event) => {
@@ -60,6 +60,12 @@ const AddFriends = memo(({userID, authService, friendService}) => {
             });
     }
 
+    const enterControl = (e) => {
+        if(e.key === 'Enter'){
+            onSubmit(e)
+        }
+    }
+
     return (
         <div className='addFriend-wrap'>
             <h3>아몬드톡 ID로 추가</h3>
@@ -70,6 +76,7 @@ const AddFriends = memo(({userID, authService, friendService}) => {
                     className='addFriend-input'
                     onChange={onChange}
                     value={searchFriend}
+                    onKeyPress={enterControl}
                     placeholder='친구 아몬드톡 ID'
                     maxlength='8'
                 />

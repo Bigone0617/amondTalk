@@ -24,7 +24,7 @@ const ChatCard = memo(({chat, owner, user, chatService}) => {
     }
 
     return (
-        <li className='chat'>
+        <li className='chat' key={chatID}>
                 {owner ? (
                     <section className='chat-container-my'>
                        {rightClick ?   

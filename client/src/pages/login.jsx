@@ -26,7 +26,7 @@ const Login = ({signUp, logIn}) => {
             case 'userName':
                 return setUserName(value);
             case 'id':
-                return setId(value);
+                return setId(value.replace(/[^A-Za-z0-9+]/ig, ''));
             case 'pw':
                 return setPw(value);
             case 'email':
@@ -48,6 +48,7 @@ const Login = ({signUp, logIn}) => {
             value={id}
             onChange={onChange}
             className='form-input'
+            maxLength='8'
             required
           />
           <input
@@ -57,6 +58,7 @@ const Login = ({signUp, logIn}) => {
             value={pw}
             className='form-input'
             onChange={onChange}
+            required
           />
           {signup && (
             <input

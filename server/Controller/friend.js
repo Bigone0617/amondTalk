@@ -45,3 +45,10 @@ export async function createChatRoom(req, res) {
         return res.status(201).json(returnfID);
     }
 }
+
+export async function getAllChatRooms(req, res) {
+    const {userID} = req.params;
+    const chatRooms = await friendRepository.getAllChatRooms(userID);
+
+    return res.status(200).json(chatRooms);
+}

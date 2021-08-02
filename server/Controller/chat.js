@@ -1,4 +1,5 @@
 import * as chatRepository from '../Repository/chat.js';
+import * as friendRepository from '../Repository/friend.js';
 import { getSocketIO } from '../connection/socket.js';
 
 // create chat
@@ -49,4 +50,12 @@ export async function getLastChat(req, res) {
     const {roomID} = req.params;
     const lastChat = await chatRepository.getLastChat(roomID);
     res.status(200).json({text: lastChat[0].dataValues.text, time: lastChat[0].dataValues.chatTime});
+}
+
+export async function closeChatRoom(req, res) {
+    const {roomID} = req.body;
+    await friendRepository.closeChatRoom(roomID);
+    await chatRepository.closeChatRoom(roomID);
+
+    res.sendStatus(204);
 }

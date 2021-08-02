@@ -22,4 +22,5 @@ router.delete('/deleteUser', authController.deleteUser);
 router.get('/me', isAuth, authController.me);
 // id로 회원정보 가져오기
 router.get('/findById/:userID', authController.getById);
+
 export default router;

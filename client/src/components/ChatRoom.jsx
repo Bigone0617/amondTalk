@@ -1,11 +1,10 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo} from 'react';
 import { useHistory } from 'react-router-dom';
 
 import parseDate from '../util/date';
 
-const ChatRoom = memo(({authService, chatService, friendID, roomID}) => {
-    const [friend, setFriend] = useState({});
-    const [lastChat, setLastChat] = useState({});
+const ChatRoom = memo(({chatRoomData}) => {
+    const {url, userName, text, roomID, createdAt} = chatRoomData;
     const emptyUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2UfTSQN07wL1KUUzw5B0FpM1oLUl1kVHEmEvm1BbAJBkpDIdd3SXol0WQtnlG11fkKXU&usqp=CAU';
     const history = useHistory();
 
@@ -16,39 +15,22 @@ const ChatRoom = memo(({authService, chatService, friendID, roomID}) => {
         });
     }
 
-    useEffect(() => {
-        authService
-            .findById(friendID)
-            .then((data) => {
-                setFriend(data);
-            })
-            .then(() => {
-                chatService
-                    .getLastChat(roomID)
-                    .then((data) => {
-                        setLastChat(data);
-                    });
-            });
-
-        
-    }, [authService, friendID, chatService, roomID]);
-
     return (
         <li onClick={clickChatRoom}>
             <section className='chatRoom-container'>
                 <div className='chatRoom-img-wrap'>
-                    <img className='chatRoom-img' src={friend.url ? friend.url : emptyUrl} alt='chatRoom img'/>
+                    <img className='chatRoom-img' src={url ? url : emptyUrl} alt='chatRoom img'/>
                 </div>
                 <div className='chatRoom-name-wrap'>
                     <div className='chatRoom-name'>
-                        <h5>{friend.userName}</h5>
+                        <h5>{userName}</h5>
                     </div>
                     <div className='chatRoom-text'>
-                        {lastChat.text}
+                        {text}
                     </div>
                 </div>
                 <div className='chatRoom-time'>
-                    {parseDate(lastChat.time)}
+                    {parseDate(createdAt)}
                 </div>
             </section>
         </li>
