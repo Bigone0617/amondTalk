@@ -44,34 +44,36 @@ const Friends = memo(({authService, userID, friendService}) => {
                 <div className='friend-title'>
                     친구
                 </div>
-                <button className='friendsIcon' onClick={clickFindFriends}>
-                    <RiUserSearchLine  size="25"/>
-                </button>
-                <button className='friendsIcon' onClick={clickAddFriends}>
-                    <RiUserAddLine  size="25"/>
-                </button>
+                <div className='friend-icon-wrap'>
+                    <button className='friendsIcon' onClick={clickFindFriends}>
+                        <RiUserSearchLine  size="25"/>
+                    </button>
+                    <button className='friendsIcon' onClick={clickAddFriends}>
+                        <RiUserAddLine  size="25"/>
+                    </button>
+                </div>
             </div>
             {
                 findFriends && <Search setFriends={setFriends} friendService = {friendService} userID={userID}/>
             }
+            <div onClick={clickMe} key={me.id}>
+                    <section className='friend-container-me'>
+                        <div className='friend-img-wrap'>
+                            <img className='friend-img' src={me.url ? me.url : emptyUrl} alt='freind img'/>
+                        </div>
+                        <div className='friend-stmsg'>
+                            {me.stmsg}
+                        </div>
+                        <div className='friend-name'>
+                            <h5>{me.userName}</h5>
+                        </div>
+                        
+                    </section>
+            </div>
+            <div className='friendTitle'>
+                친구 {friends.length}
+            </div>
             <ul className='freindList'>
-                <li onClick={clickMe} key={me.id}>
-                        <section className='friend-container-me'>
-                            <div className='friend-img-wrap'>
-                                <img className='friend-img' src={me.url ? me.url : emptyUrl} alt='freind img'/>
-                            </div>
-                            <div className='friend-stmsg'>
-                                {me.stmsg}
-                            </div>
-                            <div className='friend-name'>
-                                <h5>{me.userName}</h5>
-                            </div>
-                            
-                        </section>
-                </li>
-                <div className='friendTitle'>
-                    친구 {friends.length}
-                </div>
                 {friends.map((data) => {
                     return (
                             <>

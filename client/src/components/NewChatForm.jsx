@@ -1,8 +1,9 @@
-import React, {useLayoutEffect, useState} from 'react';
+import React, {useLayoutEffect, useRef, useState} from 'react';
 
 
 const NewChatForm = ({chatService, onError, userID, userName, roomID}) => {
     const [chat, setChat] = useState('');
+    const inputRef = useRef();
 
     // chat scroll focus move to bottom
     useLayoutEffect(() => {
@@ -18,6 +19,7 @@ const NewChatForm = ({chatService, onError, userID, userName, roomID}) => {
                 .postChat(chat, userID, userName, roomID)
                 .then(() => {
                     setChat('')
+                    inputRef.current.blur();
                 })
                 .catch(onError);
         }
@@ -35,8 +37,9 @@ const NewChatForm = ({chatService, onError, userID, userName, roomID}) => {
                 autoFocus
                 onChange={onChange}
                 className='form-input chat-input'
+                refs={inputRef}
             />
-            <button type='submit' className='form-btn'>🎈</button>
+            <button type='submit' className='form-btn'>🥜</button>
         </form>
     )
 }

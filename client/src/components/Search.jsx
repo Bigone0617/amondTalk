@@ -10,10 +10,10 @@ const Search = memo(({setFriends, friendService, userID}) => {
             setFriends(searchF);
             console.log(searchF)
         }else{
-            const test = searchF.filter((data) => 
+            const searchFriend = searchF.filter((data) => 
                 data.userName.indexOf(e.target.value) > -1
             ) ;
-            setFriends(test);
+            setFriends(searchFriend);
         }
     }
 

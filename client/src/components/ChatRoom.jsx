@@ -16,10 +16,12 @@ const ChatRoom = memo(({chatRoomData}) => {
     }
 
     return (
-        <li onClick={clickChatRoom}>
+        <li onClick={clickChatRoom} key={roomID}>
             <section className='chatRoom-container'>
-                <div className='chatRoom-img-wrap'>
-                    <img className='chatRoom-img' src={url ? url : emptyUrl} alt='chatRoom img'/>
+                <div className='chatRoom-img-wrap-table'>
+                    <div className='chatRoom-img-wrap'>
+                        <img className='chatRoom-img' src={url ? url : emptyUrl} alt='chatRoom img'/>
+                    </div>
                 </div>
                 <div className='chatRoom-name-wrap'>
                     <div className='chatRoom-name'>

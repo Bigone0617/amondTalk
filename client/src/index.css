@@ -10,6 +10,10 @@
   --color-red: #cc473d;
   --color-green: #7aa300;
   --color-shadow: rgba(0, 0, 0, 0.2);
+  --color-chatRoom: #fff9e0;
+  --color-chat: #fce18a;
+  --color-anotherChat: #d7c474;
+  --color-btn: #d7c474;
   --size-avatar: 38px;
 }
 
@@ -57,8 +61,10 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--color-black);
+  background-color: var(--color-white);
   padding: 8px;
+  color: var(--color-black);
+  border-bottom: 2px solid var(--color-chat);
 }
 
 .login-wrap {
@@ -77,17 +83,6 @@ button {
   height: 32px;
 }
 
-.logo-name {
-  font-size: 2rem;
-  margin: 8px;
-}
-
-.logo-user {
-  font-size: 0.7rem;
-  color: var(--color-blue);
-  padding-top: 8px;
-}
-
 .sign-wrap {
   max-width: 500px;
   margin-top: 20px;
@@ -98,12 +93,21 @@ button {
   border-radius: 50%;
 }
 
-.menu {
-  color: var(-color-white);
+.menu nav button {
+  margin-left: 3px;
+  color: var(--color-black);
 }
 
-.menu button {
-  margin-left: 3px;
+.menu nav button:hover {
+  color: var(--color-chat);
+}
+
+.menu nav button:active {
+  color: var(--color-chat);
+}
+
+.menu nav button:focus {
+  color: var(--color-chat);
 }
 
 .banner {
@@ -136,11 +140,11 @@ button {
 .form-btn {
   font-size: 1.2rem;
   font-weight: bold;
-  background-color: var(--color-white);
+  background-color: var(--color-chat);
   padding: 4px;
-  color: var(--color-yellow);
+  color: var(--color-white);
   border-radius: 8px;
-  border: 2px solid var(--color-yellow);
+  border: 2px solid var(--color-chat);
 }
 
 /* chats */
@@ -152,20 +156,22 @@ button {
 .chatBack-wrap {
   width: 50%;
   text-align: left;
+  background-color: var(--color-chatRoom);
 }
 
 .chatBack {
-  color: var(--color-red);
+  color: var(--color-btn);
 }
 
 .chatClose-wrap {
   width: 50%;
   text-align: right;
+  background-color: var(--color-chatRoom);
 }
 
 .chatClose {
-  color: var(--color-white);
-  background-color: var(--color-green);
+  color: var(--color-black);
+  background-color: var(--color-btn);
   border-radius: 8px;
   font-weight: bold;
   margin: 5px;
@@ -177,6 +183,8 @@ button {
   color: var(--color-black);
   padding: 16px;
   list-style: none;
+  background-color: var(--color-chatRoom);
+  margin: 0;
 }
 
 .chats::-webkit-scrollbar {
@@ -187,7 +195,7 @@ button {
 
 .chats::-webkit-scrollbar-thumb {
   /* Safari and Chrome */
-  background-color: var(--color-yellow);
+  background-color: var(--color-chat);
 }
 
 .chat {
@@ -205,7 +213,7 @@ button {
 .avatar-img {
   width: var(--size-avatar);
   height: var(--size-avatar);
-  border: 2px solid var(--color-yellow);
+  border: 2px solid var(--color-chat);
   border-radius: 50%;
 }
 
@@ -238,7 +246,7 @@ button {
   color: var(--color-black);
   text-align: left;
   height: auto;
-  background-color: var(--color-grey);
+  background-color: var(--color-anotherChat);
   word-wrap: break-word;
 }
 
@@ -251,7 +259,7 @@ button {
   color: var(--color-black);
   text-align: left;
   height: auto;
-  background-color: var(--color-yellow);
+  background-color: var(--color-chat);
   word-wrap: break-word;
   float: right;
   flex: auto;
@@ -276,7 +284,7 @@ button {
   display: flex;
   width: 100%;
   padding: 4px 16px;
-  background-color: var(--color-yellow);
+  background-color: var(--color-chatRoom);
 }
 
 .chat-input {
@@ -295,7 +303,7 @@ button {
   width: 250px;
   height: 250px;
   border-radius: 45%;
-  border: 2px solid var(--color-yellow);
+  border: 2px solid var(--color-chat);
 }
 
 /* another profile */
@@ -310,7 +318,7 @@ button {
   width: 250px;
   height: 250px;
   border-radius: 45%;
-  border: 2px solid var(--color-yellow);
+  border: 2px solid var(--color-chat);
 }
 
 .detail-wrap {
@@ -340,7 +348,7 @@ button {
   height: 30px;
   width: 150px;
   margin-top: 30px;
-  background-color: var(--color-yellow);
+  background-color: var(--color-chat);
   color: var(--color-black);
   border-radius: 5%;
 }
@@ -358,6 +366,19 @@ button {
   border: solid 2px var(--color-darkGrey);
 }
 
+/*search Chats*/
+.findChats-wrap {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+}
+
+.findChats {
+  width: 90%;
+  height: 30px;
+  border: solid 2px var(--color-darkGrey);
+}
+
 /* friend*/
 .friend-title-wrap {
   color: var(--color-black);
@@ -366,18 +387,37 @@ button {
   margin-left: 20px;
   font-size: 30px;
   line-height: 50px;
-  width: 75%;
   display: inline-block;
+}
+
+.friend-icon-wrap {
+  float: right;
+  height: 100%;
+  margin-right: 10px;
 }
 .friendsIcon {
   color: var(--color-black);
+  line-height: 50px;
   display: inline-block;
-  width: 10%;
 }
+
 .freindList {
   padding-inline-start: 0px;
+  /*overflow-y: auto; 이 값이 있어야 scroll이 생김*/
+  overflow-y: auto;
   list-style: none;
   margin-top: 0px;
+}
+
+.freindList::-webkit-scrollbar {
+  /* Safari and Chrome */
+  background-color: var(--color-darkGrey);
+  width: 10px;
+}
+
+.freindList::-webkit-scrollbar-thumb {
+  /* Safari and Chrome */
+  background-color: var(--color-chat);
 }
 
 .friend-container {
@@ -387,7 +427,7 @@ button {
 }
 
 .friend-container:hover {
-  background-color: var(--color-lightGrey);
+  background-color: var(--color-chatRoom);
 }
 
 .friend-img-wrap {
@@ -400,7 +440,7 @@ button {
 .friend-img {
   height: 70px;
   width: 70px;
-  border: 1px solid var(--color-yellow);
+  border: 1px solid var(--color-chat);
   border-radius: 45%;
   margin-top: 15px;
 }
@@ -433,7 +473,7 @@ button {
 }
 
 .friend-container-me:hover {
-  background-color: var(--color-lightGrey);
+  background-color: var(--color-chatRoom);
 }
 
 .friendTitle {
@@ -500,7 +540,7 @@ button {
   width: 150px;
   height: 150px;
   border-radius: 40%;
-  border: 2px solid var(--color-yellow);
+  border: 2px solid var(--color-chat);
 }
 
 .searchFriend-userName {
@@ -512,7 +552,7 @@ button {
   height: 30px;
   width: 150px;
   margin-top: 30px;
-  background-color: var(--color-yellow);
+  background-color: var(--color-chat);
   color: var(--color-black);
   border-radius: 5%;
 }
@@ -532,20 +572,37 @@ button {
   margin-left: 20px;
   font-size: 30px;
   line-height: 50px;
-  width: 85%;
   display: inline-block;
+}
+
+.chatRooms-icon-wrap {
+  float: right;
+  margin-right: 10px;
+  height: 100%;
 }
 
 .chatRoomsIcon {
   color: var(--color-black);
   display: inline-block;
-  width: 10%;
+  line-height: 50px;
 }
 
 .chatRoomsList {
   padding-inline-start: 0px;
+  overflow-y: auto;
   list-style: none;
   margin-top: 0px;
+}
+
+.chatRoomsList::-webkit-scrollbar {
+  /* Safari and Chrome */
+  background-color: var(--color-darkGrey);
+  width: 10px;
+}
+
+.chatRoomsList::-webkit-scrollbar-thumb {
+  /* Safari and Chrome */
+  background-color: var(--color-chat);
 }
 
 .chatRoom-container {
@@ -555,20 +612,25 @@ button {
 }
 
 .chatRoom-container:hover {
-  background-color: var(--color-lightGrey);
+  background-color: var(--color-chatRoom);
 }
 
-.chatRoom-img-wrap {
+.chatRoom-img-wrap-table {
   width: 20%;
   height: 100px;
   float: left;
   text-align: center;
+  display: table;
+}
+
+.chatRoom-img-wrap {
+  display: table-cell;
 }
 
 .chatRoom-img {
   height: 70px;
   width: 70px;
-  border: 1px solid var(--color-yellow);
+  border: 1px solid var(--color-chat);
   border-radius: 45%;
   margin-top: 15px;
 }
@@ -580,6 +642,9 @@ button {
 
 .chatRoom-text {
   color: var(--color-darkGrey);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .chatRoom-time {
